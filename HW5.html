@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HW-5</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script>
+$(function(){
+	
+	$.ajax({
+		url: "http://140.134.26.71:58080/web-prog/Hotels",
+		type: "GET",
+		dataType: "json",
+		success: function(data) {
+			var items = data.Infos.Info;
+			for(var i = 0; i< items.length; i++) {
+				var name = items[i].Name;
+				var Weburl = items[i].Website;
+				var imgURL = items[i].Picture1;
+				$("#attractions").append('<div>'+items[i].Name+'</div><div><a href="'+Weburl+'" target="_blank"><img src="'+imgURL+'" height="200" width="200"></a></div>');
+			}
+		},
+		error: function() {
+		}
+	});
+	
+});
+</script>
+
+</head>
+<body>
+<div id="attractions">
+</div>
+
+
+
+</body>
+</hmtl>
